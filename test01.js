@@ -7,5 +7,9 @@ const mf = new Miniflare({
   });
   `,
 });
+
 const res = await mf.dispatchFetch("http://localhost:8787/");
 console.log(await res.text()); // Hello Miniflare!
+
+const server = await mf.createServer(); // Create and start http.Server instance
+server.listen(8787, () => {});
